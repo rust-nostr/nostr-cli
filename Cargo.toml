@@ -1,13 +1,14 @@
 [package]
 name = "nostr-cli"
 version = "0.43.0"
-edition = "2021"
+edition = "2024"
 description = "Nostr CLI"
 authors = ["Yuki Kishimoto <yukikishimoto@protonmail.com>", "Rust Nostr Developers"]
 homepage = "https://github.com/rust-nostr/nostr-cli"
 repository = "https://github.com/rust-nostr/nostr-cli.git"
 license = "MIT"
 readme = "README.md"
+rust-version = "1.85.0"
 keywords = ["nostr", "cli"]
 
 [dependencies]
