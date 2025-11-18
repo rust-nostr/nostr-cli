@@ -11,6 +11,7 @@ use std::time::Duration;
 use clap::Parser;
 use indicatif::{ProgressBar, ProgressState, ProgressStyle};
 use nostr_connect::prelude::*;
+use nostr_lmdb::NostrLMDB;
 use nostr_relay_builder::prelude::*;
 use nostr_sdk::prelude::*;
 use rustyline::error::ReadlineError;
@@ -120,9 +121,11 @@ async fn run() -> Result<()> {
                 builder = builder.port(port);
             }
 
-            let relay = LocalRelay::run(builder).await?;
+            let relay = LocalRelay::new(builder);
 
-            println!("Relay running at {}", relay.url());
+            relay.run().await?;
+
+            println!("Relay running at {}", relay.url().await);
 
             loop {
                 tokio::time::sleep(Duration::from_secs(60)).await
